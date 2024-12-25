@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Busy Bee</title>
+    </head>
+    <body>
+        <aside class="sidebar">
+            <img
+                class="sidebar__logo"
+                src="/busy-bee-logo.png"
+                alt="busy bee logo"
+            />
+            <ul class="sidebar__nav">
+                <li class="sidebar__nav-item active" data-nav-type="allTasks">
+                    All tasks
+                </li>
+                <li class="sidebar__nav-item" data-nav-type="priority">
+                    Priority
+                </li>
+                <li class="sidebar__nav-item" data-nav-type="dueDate">
+                    Due dates
+                </li>
+                <li class="sidebar__nav-item" data-nav-type="checked">
+                    Checked Tasks
+                </li>
+                <li class="sidebar__nav-item" data-nav-type="trash">Trash</li>
+            </ul>
+
+            <a
+                class="sidebar__link"
+                href="/sun-icon.png"
+                target="_blank"
+                ></a>
+        </aside>
+
+        <main class="main">
+            <nav class="main__navbar">
+                <div class="navbar__time">
+                    <p class="navbar__day">Today</p>
+                    <h3 class="navbar__date">Jan 1, 2000</h3>
+                </div>
+
+                <div class="navbar__info">
+                    <img
+                        class="navbar__icon"
+                        src="/notifications-icon.png"
+                        alt=""
+                    />
+                    <img class="navbar__icon" src="/profile-icon.png" alt="" />
+                </div>
+            </nav>
+
+            <section class="main__title-container">
+                <p class="main__pretitle">Hello, user</p>
+                <h2 class="main__title">
+                    You've got <br /><span>$</span> tasks today
+                </h2>
+                <div class="main__search">
+                    <img
+                        class="main__search-icon"
+                        src="/search-icon.png"
+                        alt=""
+                    />
+                    <input
+                        class="main__search-input"
+                        type="text"
+                        placeholder="Search"
+                    />
+                </div>
+            </section>
+
+            <section class="main__tasks">
+                <header class="tasks__header">
+                    <h2 class="header__title">All tasks</h2>
+                    <button class="primary-btn" id="add-tasks-btn">
+                        add tasks
+                    </button>
+                </header>
+            </section>
+
+            <section class="tasks-container">
+                <!-- <div
+                    class="task-box"
+                    data-task-id="${taskId}"
+                    data-priority-value="${priority}"
+                >
+                    <div class="task-box__header">
+                        <img
+                            class="task-box__circle"
+                            src="/circle-icon.png"
+                            alt="circle icon"
+                        />
+                        <h3 class="task-box__title">${title}</h3>
+                    </div>
+
+                    <ul class="task-box__tags-container">
+                        ${tagsList}
+                    </ul>
+
+                    <p class="task-box__description">${desc}</p>
+
+                    <div class="task-box__footer">
+                        <img
+                            class="task-box__edit task-box__icon"
+                            src="/edit-icon.png"
+                            alt="edit icon"
+                        />
+                        <img
+                            class="task-box__delete task-box__icon"
+                            src="/delete-icon.png"
+                            alt="menu icon"
+                        />
+                        <p class="task-box__date">Due: ${dueDate}</p>
+                    </div>
+                </div> -->
+
+                <!-- All Tasks -->
+                <div
+                    class="tasks-section all-tasks-container active"
+                    data-container-type="allTasks"
+                ></div>
+
+                <!-- Priority -->
+                <div
+                    class="tasks-section priority-section-container"
+                    data-container-type="priority"
+                >
+                    <div class="high priority-section">
+                        <h1 class="priority-section__title">High</h1>
+                        <div class="tasks"></div>
+                    </div>
+                    <hr />
+                    <div class="medium priority-section">
+                        <h1 class="priority-section__title">Medium</h1>
+                        <div class="tasks"></div>
+                    </div>
+                    <hr />
+                    <div class="low priority-section">
+                        <h1 class="priority-section__title">Low</h1>
+                        <div class="tasks"></div>
+                    </div>
+                    <hr />
+                    <div class="none priority-section">
+                        <h1 class="priority-section__title">None</h1>
+                        <div class="tasks"></div>
+                    </div>
+                    <hr />
+                    <div class="unset">
+                        <h1 class="priority-section__title">Unset</h1>
+                        <div class="tasks"></div>
+                    </div>
+                </div>
+
+                <!-- Due Date -->
+                <div class="tasks-section" data-container-type="dueDate">
+                    Due Date
+                </div>
+
+                <!-- Checked -->
+                <div class="tasks-section" data-container-type="checked">
+                    Checked Tasks
+                </div>
+
+                <!-- Trash -->
+                <div class="tasks-section" data-container-type="trash">
+                    Trash
+                </div>
+            </section>
+        </main>
+
+        <div class="panel" id="panel">
+            <div class="panel__bg" id="panel__bg"></div>
+            <div class="panel__content">
+                <img
+                    class="panel__close"
+                    id="panel__close"
+                    src="/x-icon.png"
+                    alt=""
+                />
+                <h2 class="panel__title">Add a task</h2>
+                <input
+                    class="panel__title-input"
+                    type="text"
+                    placeholder="Title"
+                />
+                <textarea
+                    class="panel__description-input"
+                    placeholder="Description"
+                ></textarea>
+
+                <div class="panel__tag-container">
+                    <p class="panel__input-title">Tags</p>
+                    <input
+                        type="text"
+                        class="panel__tag-input"
+                        placeholder="Separate by commas (E.g., Homework, Assignment, Math, English)"
+                    />
+                </div>
+
+                <div class="panel__tag-container">
+                    <p class="panel__input-title">Due Date</p>
+                    <input type="date" class="panel__due-date-input" />
+                </div>
+
+                <div class="panel__controls">
+                    <div class="panel__additional">
+                        <!-- <img src="/tag-icon.png" alt="" /> -->
+
+                        <div class="panel__priority">
+                            <img
+                                class="priority__btn"
+                                src="/blue-circle-icon.png"
+                                alt=""
+                                title="priority"
+                            />
+
+                            <ul class="priority__menu">
+                                <li
+                                    class="priority__item high"
+                                    style="--clr-main: var(--clr-primary)"
+                                    data-priority-value="high"
+                                >
+                                    <div class="priority__circle"></div>
+                                    <p>High</p>
+                                </li>
+                                <li
+                                    class="priority__item medium"
+                                    style="--clr-main: var(--clr-secondary)"
+                                    data-priority-value="medium"
+                                >
+                                    <div class="priority__circle"></div>
+                                    <p>Medium</p>
+                                </li>
+                                <li
+                                    class="priority__item low"
+                                    style="--clr-main: var(--clr-success)"
+                                    data-priority-value="low"
+                                >
+                                    <div class="priority__circle"></div>
+                                    <p>Low</p>
+                                </li>
+                                <li
+                                    class="priority__item none"
+                                    style="--clr-main: var(--clr-text)"
+                                    data-priority-value="none"
+                                >
+                                    <div class="priority__circle"></div>
+                                    <p>None</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel__btns">
+                        <button class="primary-btn" id="panel__add-task">
+                            Add task
+                        </button>
+                        <button
+                            class="primary-btn"
+                            id="panel__edit-task"
+                            style="display: none"
+                        >
+                            Save Edits
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./src/Elements.js"></script>
+        <script type="module" src="./src/main.js"></script>
+    </body>
+</html>
